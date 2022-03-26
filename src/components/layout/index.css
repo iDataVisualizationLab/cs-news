@@ -1,0 +1,8 @@
+.MuiPaper-root
+{
+    font-family: "Montserrat" !important
+}
+.MuiButton-contained.MuiButton-root {
+    text-transform: none;
+    border-radius: 30px;
+}
