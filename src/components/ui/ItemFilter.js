@@ -14,6 +14,9 @@ import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import Grow from '@mui/material/Grow';
 import "./itemFilter.css"
+import {styled} from "@mui/material/styles";
+import parse from "html-react-parser"
+import Link from "@mui/material/Link";
 const example = [{title: 'title1', content: "contentttttttttttttttt", topic: "achievement"}, {
     title: 'title2',
     content: "contentttttttttttttttt",
@@ -41,9 +44,13 @@ const ItemFilter = function ({data = example}) {
     const [currentIndex, set] = useState(0);
     const renderCard = (d)=>{
         return <CardContent style={{textAlign:"left"}}>
-            <Typography variant={"subtitle1"}>{(d.Date??new Date()).toLocaleString()}</Typography>
-            <h2 >{d.title}</h2>
-            <Typography variant={"boday2"}>{d.content}</Typography>
+            <Typography variant={"subtitle1"}>{(d.time??new Date()).toLocaleString()}</Typography>
+            <h2><Link className={"title"} href={d.url} target={'_blank'} variant={"div"} underline="none" color="inherit"
+                  sx={{'&:hover':{color:'primary.main'}}}
+            >{parse(d.title)}</Link></h2>
+            <Typography variant={"body2"} className={"post-content"} >
+                {parse(d.content)}
+            </Typography>
 
             <Divider style={{marginTop:10,marginBottom:10}}/>
             <Chip label={d.topic}/>
@@ -52,10 +59,10 @@ const ItemFilter = function ({data = example}) {
     return <div style={{position: 'relative', width: '100%', marginTop:30}}>
         <Grid container spacing={6}>
         <Grid item xs={12}>
-        <ToggleButtonGroup value={value} size="small"  exclusive={"true"} onChange={(e,newV)=>setVal(newV)}>
+        <ToggleButtonGroup color={"primary"} value={value} size="small"  exclusive={"true"} onChange={(e,newV)=>setVal(newV)}>
             {category.map((d,i)=><ToggleButton value={d} key={d} variant={"contained"}
                                                style={{marginLeft:10,marginRight:10,
-                borderRadius:30,borderLeft:'unset',background: d===value?'#9ea7ff':''}}>
+                borderRadius:30,borderLeft:'unset'}}>
                 {d}
             </ToggleButton>)}
         </ToggleButtonGroup>
@@ -63,26 +70,28 @@ const ItemFilter = function ({data = example}) {
         <Grid container item xs={12} spacing={6}>
             {cards.map((d,i)=>i%2?<Grow in={true} ><Grid item xs={12}>
                     <Card key={i} sx={{ display: 'flex'}} elevation={10} className={"newCard"}>
-                <Box sx={{ display: 'flex', flexDirection: 'column',flexGrow:2 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column',width:'60%' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
                         {renderCard(d)}
                     </CardContent>
                 </Box>
-                <CardMedia
-                    component="img"
-                    sx={{ width: '40%' }}
-                    image="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/72bda89f-9bbf-4685-910a-2f151c4f3a8a/NicolaSturgeon_2019T-embed.jpg?w=512"
-                    alt="Live from space album cover"
-                />
+                <Box sx={{ width: '40%',maxHeight:'400px', position:'relative'}}>
+                    <CardMedia
+                        component="div"
+                        image={d.image}
+                        sx={{height:'100%'}}
+                    />
+                </Box>
                 </Card></Grid></Grow>:
                 <Grow in={true} ><Grid item xs={12}><Card key={i} sx={{ display: 'flex'}} className={"newCard"} elevation={10}>
-                    <CardMedia
-                        component="img"
-                        sx={{ width: '40%' }}
-                        image="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/72bda89f-9bbf-4685-910a-2f151c4f3a8a/NicolaSturgeon_2019T-embed.jpg?w=512"
-                        alt="Live from space album cover"
-                    />
-                    <Box sx={{ display: 'flex', flexDirection: 'column',flexGrow:2  }}>
+                    <Box sx={{ width: '40%',maxHeight:'400px', position:'relative' }}>
+                        <CardMedia
+                            component="div"
+                            image={d.image}
+                            sx={{height:'100%'}}
+                        />
+                    </Box>
+                    <Box sx={{ display: 'flex', flexDirection: 'column',width:'60%' }}>
                         <CardContent sx={{ flex: '1 0 auto' }}>
                             {renderCard(d)}
                         </CardContent>
@@ -92,4 +101,12 @@ const ItemFilter = function ({data = example}) {
         </Grid>
     </div>
 }
-export default ItemFilter
+
+export default styled(ItemFilter)(
+    ({ theme }) =>(
+   {
+       '& .title': {
+            backgroundColor: theme.palette.primary.main
+       }
+   }),
+);
