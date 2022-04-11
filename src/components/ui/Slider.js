@@ -72,11 +72,11 @@ const Slider = function ({data = example,interval=6000}) {
                     <Grid item>
                         <h2 className={"limit3"}>{data[currentIndex].titleShort??parse(data[currentIndex].title)}</h2>
                     </Grid>
-                    <Grid item style={{flexGrow:2}}>
+                    <Grid item style={{flexGrow:2, maxHeight:'20vh', overflowY:'hidden'}}>
                         <Typography variant="body2" className={"limit4"}>{parse(data[currentIndex].content)}</Typography>
                     </Grid>
                     <Grid item style={{marginTop:30}}>
-                        <Button variant="contained">Learn more</Button>
+                        <Button variant="contained" href={data[currentIndex].url} target="_blank">Learn more</Button>
                     </Grid>
                 </Grid>}
                 <Grid container direction={"column"} style={{height: '100%',float:'right',width:'30%',position:'absolute',top:80,right:0}}>
