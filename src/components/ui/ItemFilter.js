@@ -44,7 +44,7 @@ const ItemFilter = function ({data = example}) {
     const [currentIndex, set] = useState(0);
     const renderCard = (d)=>{
         return <CardContent style={{textAlign:"left"}}>
-            <Typography variant={"subtitle1"}>{(d.time??new Date()).toLocaleString()}</Typography>
+            {/*<Typography variant={"subtitle1"}>{(d.time??new Date()).toLocaleString()}</Typography>*/}
             <h2><Link className={"title"} href={d.url} target={'_blank'} variant={"div"} underline="none" color="inherit"
                   sx={{'&:hover':{color:'primary.main'}}}
             >{parse(d.title)}</Link></h2>
