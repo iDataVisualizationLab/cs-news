@@ -21,7 +21,7 @@ function ShowNumber () {
                     <div style={{margin:'auto'}}>
                         <RunNumber
                             includeComma
-                            animateToNumber={845}
+                            animateToNumber={900}
                             fontStyle={{ fontSize: 40 }}
                             configs={[
                                 { mass: 1, tension: 220, friction: 100 },
@@ -39,7 +39,7 @@ function ShowNumber () {
                     <div style={{margin:'auto'}}>
                         <RunNumber
                             includeComma
-                            animateToNumber={268}
+                            animateToNumber={564}
                             fontStyle={{ fontSize: 40 }}
                             configs={[
                                 { mass: 1, tension: 220, friction: 100 },
@@ -57,7 +57,7 @@ function ShowNumber () {
                     <div style={{margin:'auto'}}>
                         <RunNumber
                             includeComma
-                            animateToNumber={167}
+                            animateToNumber={152}
                             fontStyle={{ fontSize: 40 }}
                             configs={[
                                 { mass: 1, tension: 220, friction: 100 },
@@ -75,7 +75,7 @@ function ShowNumber () {
                     <div style={{margin:'auto'}}>
                         <RunNumber
                             includeComma
-                            animateToNumber={64}
+                            animateToNumber={52}
                             fontStyle={{ fontSize: 40 }}
                             configs={[
                                 { mass: 1, tension: 220, friction: 100 },
@@ -97,7 +97,7 @@ function ShowNumber () {
                     <div style={{margin:'auto',opacity:0.5}}>
                         <RunNumber
                             includeComma
-                            animateToNumber={765}
+                            animateToNumber={845}
                         ></RunNumber>
                     </div>
                 </Grid>
@@ -106,7 +106,7 @@ function ShowNumber () {
                     <div style={{margin:'auto',opacity:0.5}}>
                         <RunNumber
                             includeComma
-                            animateToNumber={161}
+                            animateToNumber={268}
 
                         ></RunNumber>
                     </div>
@@ -115,7 +115,7 @@ function ShowNumber () {
                     <div style={{margin:'auto',opacity:0.5}}>
                         <RunNumber
                             includeComma
-                            animateToNumber={109}
+                            animateToNumber={167}
                         ></RunNumber>
                     </div>
                 </Grid>
@@ -123,7 +123,7 @@ function ShowNumber () {
                     <div style={{margin:'auto',opacity:0.5}}>
                         <RunNumber
                             includeComma
-                            animateToNumber={24}
+                            animateToNumber={64}
                         ></RunNumber>
                     </div>
                 </Grid>
